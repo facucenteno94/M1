@@ -13,25 +13,25 @@ var a = 5;
 var b = 10;
 var c = function(a, b, c) {
   var x = 10;
-  console.log(x);
-  console.log(a);
+  console.log(x); // 10
+  console.log(a); // 8
   var f = function(a, b, c) {
-    b = a;
-    console.log(b);
-    b = c;
-    var x = 5;
+    b = a; // 5
+    console.log(b); // 8
+    b = c; // 10
+    var x = 5; // 5
   }
-  f(a,b,c);
-  console.log(b);
+  f(a,b,c); // CALL A LA LINEA 18
+  console.log(b);// 9
 }
 c(8,9,10);
-console.log(b);
-console.log(x);
+console.log(b); // 10
+console.log(x); // 1
 ```
 
 ```javascript
-console.log(bar);
-console.log(baz);
+console.log(bar); // UNDEFINED
+console.log(baz); // ERROR - NO ESTA DEFINIDA (VAR TE DEVUELVE UNDEFINED)
 foo();
 function foo() { console.log('Hola!'); }
 var bar = 1;
@@ -43,19 +43,19 @@ var instructor = "Tony";
 if(true) {
     var instructor = "Franco";
 }
-console.log(instructor);
+console.log(instructor); // FRANCO - PORQUE ES TRUE.
 ```
 
 ```javascript
 var instructor = "Tony";
-console.log(instructor);
+console.log(instructor); // TONY
 (function() {
    if(true) {
       var instructor = "Franco";
-      console.log(instructor);
+      console.log(instructor); // FRANCO
    }
 })();
-console.log(instructor);
+console.log(instructor); // TONY
 ```
 
 ```javascript
@@ -64,33 +64,33 @@ let pm = "Franco";
 if (true) {
     var instructor = "The Flash";
     let pm = "Reverse Flash";
-    console.log(instructor);
-    console.log(pm);
+    console.log(instructor); // THE FLASH
+    console.log(pm); // REVERSE FLASH
 }
-console.log(instructor);
-console.log(pm);
+console.log(instructor); // THE FLASH
+console.log(pm); // FRANCO
 ```
 ### Coerción de Datos
 
 ¿Cuál crees que será el resultado de la ejecución de estas operaciones?:
 
 ```javascript
-6 / "3"
-"2" * "3"
-4 + 5 + "px"
-"$" + 4 + 5
-"4" - 2
-"4px" - 2
-7 / 0
-{}[0]
-parseInt("09")
-5 && 2
-2 && 5
-5 || 0
-0 || 5
-[3]+[3]-[10]
-3>2>1
-[] == ![]
+6 / "3" // 2
+"2" * "3" // 6
+4 + 5 + "px" // '9px'
+"$" + 4 + 5 // '$45'
+"4" - 2 // 2
+"4px" - 2 // NaN
+7 / 0 // Infinity
+{}[0] // [0]
+parseInt("09") // 9
+5 && 2 // 2
+2 && 5 // 5
+5 || 0 // 5
+0 || 5 // 5
+[3]+[3]-[10] // 23
+3>2>1 // FALSE - PORQUE 3>2 ES TRUE Y TRUE>1 ES FALSE
+[] == ![] // TRUE
 ```
 
 > Si te quedó alguna duda repasá con [este artículo](http://javascript.info/tutorial/object-conversion).
@@ -102,8 +102,8 @@ parseInt("09")
 
 ```javascript
 function test() {
-   console.log(a);
-   console.log(foo());
+   console.log(a); // UNDEFINED 
+   console.log(foo()); // 2
 
    var a = 1;
    function foo() {
@@ -119,12 +119,12 @@ Y el de este código? :
 ```javascript
 var snack = 'Meow Mix';
 
-function getFood(food) {
+function getFood(food) { // NO ENTRA AL IF PORQUE LO PASAN COMO FALSE
     if (food) {
         var snack = 'Friskies';
         return snack;
     }
-    return snack;
+    return snack; // UNDEFINED -- HACE HOISTING A SNACK PERO NO TOMA VALOR.
 }
 
 getFood(false);
@@ -140,18 +140,18 @@ var fullname = 'Juan Perez';
 var obj = {
    fullname: 'Natalia Nerea',
    prop: {
-      fullname: 'Aurelio De Rosa',
+      fullname: 'Aurelio De Rosa', // AURELIO DE ROSA
       getFullname: function() {
-         return this.fullname;
+         return this.fullname; // JUAN PEREZ
       }
    }
 };
 
-console.log(obj.prop.getFullname());
+console.log(obj.prop.getFullname()); // AURELIO DE ROSA
 
 var test = obj.prop.getFullname;
 
-console.log(test());
+console.log(test()); // JUAN PEREZ
 ```
 
 ### Event loop
@@ -159,7 +159,7 @@ console.log(test());
 Considerando el siguiente código, ¿Cuál sería el orden en el que se muestra por consola? ¿Por qué?
 
 ```javascript
-function printing() {
+function printing() { // 1 4 3 2 
    console.log(1);
    setTimeout(function() { console.log(2); }, 1000);
    setTimeout(function() { console.log(3); }, 0);
