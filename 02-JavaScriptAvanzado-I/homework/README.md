@@ -16,7 +16,7 @@ var c = function(a, b, c) {
   console.log(x); // 10
   console.log(a); // 8
   var f = function(a, b, c) {
-    b = a; // 5
+    b = a; // 8
     console.log(b); // 8
     b = c; // 10
     var x = 5; // 5
@@ -43,6 +43,7 @@ var instructor = "Tony";
 if(true) {
     var instructor = "Franco";
 }
+
 console.log(instructor); // FRANCO - PORQUE ES TRUE.
 ```
 
