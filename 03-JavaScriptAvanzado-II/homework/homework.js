@@ -20,7 +20,6 @@ function counter() {
   otroContador()      // 3
    */ 
   let contador = 0;
-
   return function incrementa (){
     contador = contador+1;
     return contador;
