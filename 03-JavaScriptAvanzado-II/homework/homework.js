@@ -50,11 +50,11 @@ function cacheFunction(cb) {
   var cache = {};
 	return function(numero) {
 		if (cache.hasOwnProperty(numero))
-     return cache[numero];
+     return cache[numero];    
 		cache[numero] = cb(numero);
-		return cache[numero]; 
+		return cache[numero];     
 	};   
- }
+}
 
 // Bind
 
