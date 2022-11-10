@@ -30,6 +30,10 @@ function nFibonacci(n) {
   } else{
     return nFibonacci(n - 1) + nFibonacci(n - 2);
   }
+
+// Misma solución pero con ES6.
+// return n <= 1 ? n : fib(n - 1) + fib(n - 2);
+
 }
 
 /*
@@ -44,20 +48,20 @@ Pueden utilizar class o función constructora.
 class Queue {
   constructor(){
   this.arr = [];
-}
+  }
 
 enqueue(elem){
   this.arr.push(elem)
-}
+  }
 
 dequeue(){
   let eliminado = this.arr.shift()
   return eliminado;
-}
+  }
 
 size(){
   return this.arr.length;
-}
+  }
 }
 
 // No modifiquen nada debajo de esta linea
