@@ -22,6 +22,9 @@ function nFactorial(n) {
   }else{
     return n * nFactorial(n-1);
   }
+
+  // Misma solución pero con ES6.
+// return n <= 1 ? 1 : n * nFactorial(n-1);
 }
 
 function nFibonacci(n) {  
@@ -32,7 +35,7 @@ function nFibonacci(n) {
   }
 
 // Misma solución pero con ES6.
-// return n <= 1 ? n : fib(n - 1) + fib(n - 2);
+// return n <= 1 ? n : nFibonacci(n - 1) + nFibonacci(n - 2);
 
 }
 
@@ -62,6 +65,7 @@ dequeue(){
 size(){
   return this.arr.length;
   }
+
 }
 
 // No modifiquen nada debajo de esta linea
