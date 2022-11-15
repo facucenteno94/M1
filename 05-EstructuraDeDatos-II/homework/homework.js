@@ -92,6 +92,7 @@ HashTable.prototype.hash = function(key){
   return sum % this.numBuckets;
 };
 
+
 HashTable.prototype.set = function(key, value){
   if (typeof key !== 'string') throw new TypeError('Keys must be strings');
   let bucketNumber = this.hash(key);
