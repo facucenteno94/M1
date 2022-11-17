@@ -16,15 +16,21 @@ function BinarySearchTree(value) {
   this.left = null;
   this.right = null;
 }
+
+
 BinarySearchTree.prototype.size = function (){
+  // ? Opcion 2 ---
+  // if (!this.left && !this.right) return 1;
+  // ? -- Opcion 2.
   let longitud = 1;
   if (this.left) longitud += this.left.size();
   if (this.right) longitud += this.right.size();
   return longitud;
 }
+
 BinarySearchTree.prototype.insert = function (value){
   // ! Mayores de la derecha //
-  if (value > this.value){
+  if (value >= this.value){
   if (this.right === null) this.right = new BinarySearchTree(value);
   else this.right.insert(value);   
 }
@@ -34,6 +40,7 @@ BinarySearchTree.prototype.insert = function (value){
     else this.left.insert(value);
   }
 }
+
 BinarySearchTree.prototype.contains = function (value){
   if (this.value === value) return true;
   //! Mayores de la derecha//
@@ -47,6 +54,7 @@ BinarySearchTree.prototype.contains = function (value){
     return this.left.contains(value);
   }
 }
+
 BinarySearchTree.prototype.depthFirstForEach = function (cb, order){
   //! POST ORDER -- IZQUIERDA -> DERECHA -> ROOT //
   if (order === 'post-order'){
@@ -67,6 +75,7 @@ BinarySearchTree.prototype.depthFirstForEach = function (cb, order){
     if (this.right !== null) this.right.depthFirstForEach(cb,order);
   }
 }
+
 BinarySearchTree.prototype.breadthFirstForEach = function (cb, array = []){
   // ! Recorro la izquierda //
   if (this.left !== null){
