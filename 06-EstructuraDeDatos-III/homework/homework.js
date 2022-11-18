@@ -19,14 +19,12 @@ function BinarySearchTree(value) {
 
 
 BinarySearchTree.prototype.size = function (){
-  // ? Opcion 2 ---
-  // if (!this.left && !this.right) return 1;
-  // ? -- Opcion 2.
   let longitud = 1;
   if (this.left) longitud += this.left.size();
   if (this.right) longitud += this.right.size();
   return longitud;
 }
+
 
 BinarySearchTree.prototype.insert = function (value){
   // ! Mayores de la derecha //
@@ -73,7 +71,7 @@ BinarySearchTree.prototype.depthFirstForEach = function (cb, order){
     if (this.left !== null) this.left.depthFirstForEach(cb,order);
     cb(this.value);
     if (this.right !== null) this.right.depthFirstForEach(cb,order);
-  }
+  }  
 }
 
 BinarySearchTree.prototype.breadthFirstForEach = function (cb, array = []){
