@@ -30,20 +30,41 @@ function mergeSort(array) {
   // el array recibido como parámetro
   // Devolver el array ordenado resultante
   // Tu código:
-  if (array<=1) return array;
-  var pivote = array[0];
-  var igual = [];
-  var izq = [];
-  var der = [];
-  for (let i = 0; i < array.length; i++){
-    if (array[i] < pivote) izq.push(array[i]);
-    if (array[i] === pivote) igual.push(array[i]);
-    if (array[i] > pivote) der.push(array[i]);
-  }
-  return mergeSort(izq).concat(igual).concat(mergeSort(der));
+  //! SOLUCION 1 //
+  // if (array<=1) return array;
+  // var pivote = array[0];
+  // var igual = [];
+  // var izq = [];
+  // var der = [];
+  // for (let i = 0; i < array.length; i++){
+  //   if (array[i] < pivote) izq.push(array[i]);
+  //   if (array[i] === pivote) igual.push(array[i]);
+  //   if (array[i] > pivote) der.push(array[i]);
+  // }
+  // return mergeSort(izq).concat(igual).concat(mergeSort(der));
+  //! //
+  if(array.length <= 1)return array;
+  let mediumArray = Math.floor(array.length/2);
+  let left = array.slice(0, mediumArray);
+  let right = array.slice(mediumArray);
+  return merge(mergeSort(left), mergeSort(right));
 }
 
-
+function merge(left,right){
+  let result = [];
+  let indexLeft = 0;
+  let indexRight = 0;
+  while (indexLeft < left.length && indexRight < right.length){
+    if(left[indexLeft] < right[indexRight]){
+      result.push(left[indexLeft])
+      indexLeft++
+    }else{
+      result.push(right[indexRight])
+      indexRight++
+    }
+  }
+return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight));
+}
 // No modificar nada debajo de esta línea
 // --------------------------------
 
